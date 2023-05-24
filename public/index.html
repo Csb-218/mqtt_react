@@ -24,6 +24,14 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
     <title>React App</title>
   </head>
   <body>
@@ -40,4 +48,38 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+
+  <script>
+    $(".progress").each(function(){
+      
+      var $bar = $(this).find(".bar");
+      var $val = $(this).find("span");
+      var perc = parseInt( $val.text(), 10);
+    
+      $({p:0}).animate({p:perc}, {
+        duration: 3000,
+        easing: "swing",
+        step: function(p) {
+          $bar.css({
+            transform: "rotate("+ (45+(p*1.8)) +"deg)", // 100%=180° so: ° = % * 1.8
+            // 45 is to add the needed rotation to have the green borders at the bottom
+          });
+          $val.text(p|0);
+        }
+      });
+    }); 
+    </script>
+    
+    <script type="text/javascript">// <![CDATA[
+      $(function(){
+        $(".card-text").each(function(i){
+          len=$(this).text().length;
+          if(len>78)
+          {
+            $(this).text($(this).text().substr(0,78)+'...');
+          }
+        });
+      });
+      // ]]></script>
+    
 </html>
