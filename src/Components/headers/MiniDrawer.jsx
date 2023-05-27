@@ -107,7 +107,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 
-export default function MiniDrawer({deviceCards,deleteDevice,addDevice}) {
+export default function MiniDrawer({deviceCards,deleteDevice,addDevice,msg}) {
 
   const [open, setOpen] = React.useState(false);
 
@@ -171,7 +171,7 @@ export default function MiniDrawer({deviceCards,deleteDevice,addDevice}) {
 
         <Grid container spacing={2} marginTop={1}>
         {
-          deviceCards.map(deviceCard => <DeviceCard3 key={deviceCard.deviceId} deviceCard={deviceCard} deleteDevice={deleteDevice}/>)
+          deviceCards.map(deviceCard => <DeviceCard3 key={deviceCard.deviceId} deviceCard={deviceCard} deleteDevice={deleteDevice} msg={msg}/>)
         }
         </Grid>
      
