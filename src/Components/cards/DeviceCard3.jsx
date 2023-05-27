@@ -9,78 +9,78 @@ import cloud_download from '../../images/cloud-download.png';
 import { Link } from 'react-router-dom';
 
 
-const DeviceCard3 = ({deviceCard,deleteDevice}) => {
+const DeviceCard3 = ({deviceCard,deleteDevice,msg}) => {
   
   return (
     <>
-    <div class="device_card_section mt-5">
-    <div class="container">   
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card shadow">
-            <div class="card-body p-4">
-              <div class="d-flex justify-content-between mb-3">
-                <div class="position-relative">
-                  <span class="status on position-absolute top-50 start-100 translate-middle p-2 bg-success border border-light rounded-circle">
-                    <span class="visually-hidden">New alerts</span>
+    <div className="device_card_section mt-5">
+    <div className="container">   
+      <div className="row">
+        <div className="col-md-4">
+          <div className="card shadow">
+            <div className="card-body p-4">
+              <div className="d-flex justify-content-between mb-3">
+                <div className="position-relative">
+                  <span className="status on position-absolute top-50 start-100 translate-middle p-2 bg-success border border-light rounded-circle">
+                    <span className="visually-hidden">New alerts</span>
                   </span>
                 </div>
-                <div class="text-center">
-                  <span class="device_time d-block">Device Time: 22:22</span>
-                  <span class="location d-block">Kolkata, India</span>
+                <div className="text-center">
+                  <span className="device_time d-block">Device Time: {(deviceCard.deviceName===msg.device_name)?msg.datetime.slice(10,19):'00'}</span>
+                  <span className="location d-block">Kolkata, India</span>
                 </div>
-                <div class="p-2 bd-highlight">
-                  <div class="dropdown">
+                <div className="p-2 bd-highlight">
+                  <div className="dropdown">
                     <img src={option} alt="" data-bs-toggle="dropdown" aria-expanded="false"/>                      
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#"> <img src={cloud_download} alt=""/> Download config</a></li>
-                      <li><a class="dropdown-item" href="#"><img src={edit} alt=""/> Edit device</a></li>
-                      <li> <a class="dropdown-item text-danger" href="#" onClick={()=>deleteDevice(deviceCard.deviceName)}><img src={trash_2} alt=""/>Delete device</a>
+                    <ul className="dropdown-menu">
+                      <li><a className="dropdown-item" href="#"> <img src={cloud_download} alt=""/> Download config</a></li>
+                      <li><a className="dropdown-item" href="#"><img src={edit} alt=""/> Edit device</a></li>
+                      <li> <a className="dropdown-item text-danger" href="#" onClick={()=>deleteDevice(deviceCard.deviceName)}><img src={trash_2} alt=""/>Delete device</a>
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
               <Link to = {`${deviceCard.deviceUid}`}  className='link'> 
-              <div class="d-flex justify-content-center">
-                <div class="device-img position-relative">
-                  <img src={img1} width="202"  class="img" alt="..." />
-                  <img class="position-absolute bottom-0 end-0 translate-middle" src={verified_user} width="32px" alt=""/>
+              <div className="d-flex justify-content-center">
+                <div className="device-img position-relative">
+                  <img src={img1} width="202"  className="img" alt="..." />
+                  <img className="position-absolute bottom-0 end-0 translate-middle" src={verified_user} width="32px" alt=""/>
                 </div>                  
               </div>
-              <div class="title d-flex justify-content-between">
-                <h5 class="card-title mt-2">{deviceCard.deviceName}</h5>
-                <span class="favourite"><img src={heart} alt=""/></span>
+              <div className="title d-flex justify-content-between">
+                <h5 className="card-title mt-2">{deviceCard.deviceName}</h5>
+                <span className="favourite"><img src={heart} alt=""/></span>
               </div>               
               
                 
-              <p class="card-text">{deviceCard.description}</p>
+              <p className="card-text">{deviceCard.description}</p>
               </Link>
-              <hr class="devider" />
+              <hr className="devider" />
 
-              <div class="half_circle_progressbar d-flex justify-content-center">
-                <div class="progress">
-                  <div class="barOverflow">
-                    <div class="bar"></div>
+              <div className="half_circle_progressbar d-flex justify-content-center">
+                <div className="progress">
+                  <div className="barOverflow">
+                    <div className="bar"></div>
                   </div>
-                  <span>10</span>%
-                  <h6 class="pro-title">Cpu</h6>
+                  <span>{(deviceCard.deviceName===msg.device_name)?msg.cpu:'40'}</span>%
+                  <h6 className="pro-title">Cpu</h6>
                 </div>                 
                 
-                <div class="progress">
-                  <div class="barOverflow">
-                    <div class="bar"></div>
+                <div className="progress">
+                  <div className="barOverflow">
+                    <div className="bar"></div>
                   </div>
-                  <span>100</span>%
-                  <h6 class="pro-title">Temp</h6>
+                  <span>{(deviceCard.deviceName===msg.device_name)?msg.temperature:'60'}</span>%
+                  <h6 className="pro-title">Temp</h6>
                 </div>
                 
-                <div class="progress">
-                  <div class="barOverflow">
-                    <div class="bar"></div>
+                <div className="progress">
+                  <div className="barOverflow">
+                    <div className="bar"></div>
                   </div>
-                  <span>34</span>%
-                  <h6 class="pro-title">Memory</h6>
+                  <span>{(deviceCard.deviceName===msg.device_name)?msg.memory:80}</span>%
+                  <h6 className="pro-title">Memory</h6>
                 </div>                
                 
               </div>
